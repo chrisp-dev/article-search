@@ -9,6 +9,7 @@ $(document).ready(function () {
     // we want the clear and submit buttons
     let clearBtn = $('#clear');
     let searchBtn = $('#search');
+    let topArticleDiv = $('.inputAPI');
 
     clearBtn.on('click', clearFormAndTopArticles);
     searchBtn.on('click', searchForArticles);
@@ -17,10 +18,28 @@ $(document).ready(function () {
         event.preventDefault();
         // clear inputs
         // clear top articles div
+        let form = document.forms[0];
+        console.log(form);
+        form.reset();
+        topArticleDiv.empty();
     }
 
     function renderTopArticles(data) {
-        console.log(data);
+        console.log(data.docs);
+        // data.docs[0].headline.main = 'title'
+        // data.docs[0].byline.original = 'By Author Name'
+
+        let articles = data.docs;
+
+        articles.forEach(article => {
+            let div = $('<div class=row>');
+            let col = $('<div class=col>');
+            let jumbo = $('<div class="h3 col-12 bg-dark text-white-50">');
+            jumbo.text(article.headline.main);
+            col.text(article.abstract);
+            div.append(jumbo, $('<br>'), col);
+            topArticleDiv.append(div);
+        });
     }
 
     function searchForArticles() {
