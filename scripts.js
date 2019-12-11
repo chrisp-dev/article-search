@@ -21,10 +21,24 @@ $(document).ready(function () {
 
     function searchForArticles() {
         event.preventDefault();
-        var term = $(searchclassname).val(); // generic name
-        apiurl += term;
+        // populate query url
+        let url = populateQueryUrl();
+
+        $.get(url).then(response => console.log(response));
     }
 
-
+    /**
+     * Generate a queryurl to $.get
+     */
+    function populateQueryUrl() {
+        // q / term
+        let searchTerm = 'education'
+        // if begin_date
+        // if (true) searchTerm += '&begin_date=' + 2000;
+        // if end_date
+        // if (true) searchTerm += '&end_date=' + 2010;
+        // number of records
+        return apiurl + searchTerm;
+    }
 
 })
