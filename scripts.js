@@ -31,12 +31,14 @@ $(document).ready(function () {
 
         let articles = data.docs;
 
-        articles.forEach(article => {
+        articles.forEach((article, i) => {
+            let dl = i % 2 === 0 ? 'bg-dark text-white-50' : 'bg-light';
             let div = $('<div class=row>');
+            div.addClass(dl);
             let col = $('<div class=col>');
-            let jumbo = $('<div class="h3 col-12 bg-dark text-white-50">');
-            jumbo.text(article.headline.main);
-            col.text(article.abstract);
+            let jumbo = $('<div class="h3 col-12">');
+            jumbo.text((i + 1) + " " + article.headline.main);
+            col.text(article.byline.original);
             div.append(jumbo, $('<br>'), col);
             topArticleDiv.append(div);
         });
