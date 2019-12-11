@@ -1,0 +1,25 @@
+h1{
+    background: rgb(47, 47, 117);
+    color: white;
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-radius: 20px;
+
+}
+
+h3{
+    background: rgb(177, 173, 173);
+    border: solid rgb(73, 71, 71) 1px;
+}
+
+form{
+    border: solid rgb(73, 71, 71) 1px;
+}
+
+.row {
+}
+
+.footer{
+    border:solid purple
+}
