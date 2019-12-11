@@ -19,12 +19,18 @@ $(document).ready(function () {
         // clear top articles div
     }
 
+    function renderTopArticles(data) {
+        console.log(data);
+    }
+
     function searchForArticles() {
         event.preventDefault();
         // populate query url
         let url = populateQueryUrl();
 
-        $.get(url).then(response => console.log(response));
+        $.get(url).then(response => {
+            renderTopArticles(response.response);
+        });
     }
 
     /**
